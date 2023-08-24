@@ -7,6 +7,22 @@ class Person {
         // 1. Tambahkan di constructor untuk set value gender
     }
 
+    setName(name) {
+        this.name = name;
+        return this;
+    }
+
+    setGender(gender) {
+        const genders = ["L", "P"];
+        if (genders.includes(gender)) {
+            this.gender = gender;
+        } else {
+            console.error("Maaf gender yg di input hanya L atau P");
+        }
+
+        return this;
+    }
+
     setTitle() {
         (this.gender === "L") ? this.name = `Tuan ${this.name}` : this.name = `Nyonya ${this.name}`;
         // 2. tambahkan argument untuk set title, jika gender L = "Tuan " apabila P = "Nyonya", maka nilai 
@@ -41,3 +57,31 @@ const personFind = Person.find("Bilal", "L");
 console.log("Hasil Pencarian dengan inputan nama : ");
 console.log(personFind);
 // 7. panggil fungsi Person.find(name) dan muncul kan object person berdasarkan nama yang di input.
+
+ // Latihan OOP
+
+ class Student extends Person {
+    setClass(param) {
+        this.kelas = param;
+        //1. argumant set nilai class
+        return this;
+    }
+    
+    setSekolah(param) {
+        this.sekolah = param;
+        return this;
+    }
+    // 3. tambahkan method setSekolah
+
+}
+
+const student = new Student()
+.setName("Bilal")
+.setGender("L")
+.setClass("Kelas 12")
+.setSekolah("SMAN 1");
+// 2. Set class dengan bentuk builder pattern
+
+console.log("Tampilan Student");
+console.log(student);
+// 4. Tampilkan student
